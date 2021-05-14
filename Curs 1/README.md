@@ -8,3 +8,9 @@
 - Async / await
 - Destructuring
 - Q&A
+
+# Curs 2
+- Implementare Grid
+- Event Listeners pe celule
+- Efectul de play
+- Buton de play / reset
