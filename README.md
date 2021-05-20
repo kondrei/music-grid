@@ -14,3 +14,9 @@
 - Event Listeners pe celule
 - Efectul de play
 - Buton de play / reset
+
+# Curs 3
+- Exemplu Canvas
+- MediaPipe Holistic
+( https://google.github.io/mediapipe/solutions/holistic.html)
+- Activarea celulelor folosind MediaPipe

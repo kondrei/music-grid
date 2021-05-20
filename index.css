@@ -1,7 +1,17 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
 #app-container {
   width: 780px;
   height: 439px;
   border: 1px solid black;
+  margin-top: 20px;
+  z-index: 2;
+  margin-left: 20px;
+  position: relative;
+  opacity: 0.7;
 }
 
 #grid-container {
@@ -43,9 +53,22 @@
   border: 1px solid;
   padding: 5px;
   margin: 2px;
+  background: white;
 }
 
 .grid-play-btn:hover, .grid-reset-btn:hover {
   cursor: pointer;
   background-color: lightgreen;
+}
+
+#video-input {
+  display: none;
+}
+
+#canvas-output {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  border: 1px solid;
+  z-index: 1;
 }
