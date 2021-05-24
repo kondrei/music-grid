@@ -5,7 +5,7 @@
 
 #app-container {
   width: 780px;
-  height: 439px;
+  height: 500px;
   border: 1px solid black;
   margin-top: 20px;
   z-index: 2;
@@ -20,8 +20,11 @@
 }
 
 .grid-cell {
-  width: 35px;
-  height: 25px;
+  width: 75px;
+  height: 75px;
+  line-height: 75px;
+  text-align: center;
+  font-size: 2em;
   background-color: lightgray;
   margin: 1px;
   display: inline-block;
@@ -71,4 +74,15 @@
   left: 20px;
   border: 1px solid;
   z-index: 1;
+}
+#calc-result {
+  width: 300px;
+  height: 75px;
+  line-height: 75px;
+  text-align: right;
+  font-size: 2em;
+  background-color: lightgray;
+  margin: 1px;
+  padding: 3px;
+  display: inline-block;
 }
