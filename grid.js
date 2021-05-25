@@ -1,11 +1,13 @@
 export class Grid {
   constructor(options) {
     this.rootId = options.rootId;
+    this.resultId = options.resultId;
     this.noOfRows = options.noOfRows;
     this.noOfCells = options.noOfCells;
     this.rowClass = options.rowClass;
     this.cellClass = options.cellClass;
     this.gridContainer = document.getElementById(this.rootId);
+    this.resultContainer = document.getElementById(this.resultId);
     this.currentPlayedRow = 0;
     this.isPlaying = false;
     this.cells = [];
@@ -58,6 +60,7 @@ export class Grid {
       [...cells].forEach((cell) => {
         cell.classList.remove('active');
       })
+      this.resultContainer.innerText = 0;
     })
 
     this.gridContainer.append(resetBtn);
@@ -83,10 +86,10 @@ export class Grid {
     for (let j = 0; j < this.noOfCells; j++) {
       const cell = document.createElement('div');
       cell.classList.add(this.cellClass);
-      // cell.innerText = ;
-      (this.calcButtons[numOfRow][j] ? cell.innerText = this.calcButtons[numOfRow][j] : cell.innerText = ' ')
+      cell.innerText = this.calcButtons[numOfRow][j];   //draw calc buttons
       cell.addEventListener('click', () => {
-        this.toggleCellState(cell)
+        this.animateCell(cell);
+        this.calcEvents(cell);
       })
       cell.addEventListener('mouseenter', () => {
         if (this.isMouseDown) this.toggleCellState(cell);
@@ -110,11 +113,7 @@ export class Grid {
     const row = this.gridContainer.getElementsByClassName(this.rowClass)[this.currentPlayedRow]
     const cells = row.getElementsByClassName('grid-cell active');
     [...cells].forEach((cell) => {
-      cell.classList.add('animate');
-      setTimeout(
-        () => cell.classList.remove('animate'),
-        400
-      )
+      this.animateCell(cell);
     })
 
     if (this.currentPlayedRow === this.noOfRows - 1) {
@@ -123,5 +122,33 @@ export class Grid {
       this.currentPlayedRow++;
     }
     setTimeout(() => this.play(), 400);
+  }
+
+  animateCell(cell) {
+    cell.classList.add('animate');
+    setTimeout(
+      () => cell.classList.remove('animate'),
+      400
+    );
+  }
+
+  calcEvents(cell) {
+    if (this.resultContainer.innerText.length > 15) {
+      this.resultContainer.classList.add('small');
+    } else {
+      this.resultContainer.classList.remove('small');
+    }
+
+    if (cell.innerText === 'C') {
+      this.resultContainer.innerText = 0;
+      return;
+    }
+
+    if (cell.innerText === '=') {
+      this.resultContainer.innerText = eval(this.resultContainer.innerText);
+      return;
+    }
+
+    (this.resultContainer.innerText == 0 ? this.resultContainer.innerText = cell.innerText : this.resultContainer.innerText += cell.innerText);
   }
 }
