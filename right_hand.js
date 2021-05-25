@@ -1,6 +1,15 @@
+import { Grid } from './grid.js';
 export default class RightHand {
   constructor(grid) {
-    this.grid = grid;
+    this.grid = grid;   
+    this.calc = new Grid({
+      rootId: 'grid-container',
+      resultId: 'calc-result',
+      noOfRows: 4,
+      noOfCells: 4,
+      rowClass: 'grid-row',
+      cellClass: 'grid-cell'
+    }); 
   }
 
   isCellPressed(cell) {
@@ -35,7 +44,7 @@ export default class RightHand {
       )
       ctx.fill();
       ctx.stroke();
-
+       
       if (isPressed) {
         this.grid.cells.forEach((cell) => {
           if (this.isCellPressed(cell)) {
@@ -43,7 +52,8 @@ export default class RightHand {
             cell.classList.add('recently-activated-by-touch');
             setTimeout(() => {
               cell.classList.remove('recently-activated-by-touch');
-            }, 400)
+            }, 400);   
+            this.calc.calcEvents(cell);         
           }
         })
       }
