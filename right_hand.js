@@ -2,7 +2,9 @@ import { Grid } from './grid.js';
 export default class RightHand {
   constructor(grid) {
     this.grid = grid;   
-    this.calc = new Grid({
+    this.calc = new Grid({    
+      /* sti sa-mi spui un mod mai elegand de a apela metoda calcEvents() din clasa clasa Grid
+        folosita la linia 58? */
       rootId: 'grid-container',
       resultId: 'calc-result',
       noOfRows: 4,
