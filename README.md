@@ -1,4 +1,5 @@
 # Tema - Curs 3.
-  Pornind de la codul existent din curs, creați un calculator pe care utilizatorul il poate controla folosind mainile și webcam-ul (similar cu un calculator de buzunar, va puteti limita la operațiile de adunare, scadere, inmultire, impartire).
+  - cu hardware-ul pe care-l posed nu am reusit sa vad daca merge camera (merge foarte sacadat sau cu ce am mai de top, adica un iPad, nu merge deloc) dar sper sa daca la mouse events reactioneaza merge si cu degetu'
+  - am vrut sa fac o clasa Calculator dar nu am reusit sa extrag din clasa grid datele asa ca am creat o medota in Grid
   
   See it [here](https://raw.githack.com/kondrei/music-grid/main/index.html)
