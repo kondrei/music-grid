@@ -9,6 +9,11 @@ export class Grid {
     this.currentPlayedRow = 0;
     this.isPlaying = false;
     this.cells = [];
+    this.calcButtons = [
+      [1, 2, 3, '+'],
+      [4, 5, 6, '-'],
+      [7, 8, 9, '/'],
+      ['C', '0', '=', '*']];
   }
 
   init() {
@@ -59,11 +64,12 @@ export class Grid {
   }
 
   draw() {
-    for(let i = 0; i < this.noOfRows; i++) {
+    for (let i = 0; i < this.noOfRows; i++) {
       const row = document.createElement('div');
       row.classList.add(this.rowClass);
-      this.addCellsToRow(row);
+      this.addCellsToRow(row, i);
       this.gridContainer.append(row);
+
     }
     this.addPlayBtn();
     this.addResetBtn();
@@ -73,11 +79,12 @@ export class Grid {
     cell.classList.toggle('active')
   }
 
-  addCellsToRow(row) {
-    for(let j = 0; j < this.noOfCells; j++) {
+  addCellsToRow(row, numOfRow) {
+    for (let j = 0; j < this.noOfCells; j++) {
       const cell = document.createElement('div');
       cell.classList.add(this.cellClass);
-
+      // cell.innerText = ;
+      (this.calcButtons[numOfRow][j] ? cell.innerText = this.calcButtons[numOfRow][j] : cell.innerText = ' ')
       cell.addEventListener('click', () => {
         this.toggleCellState(cell)
       })
